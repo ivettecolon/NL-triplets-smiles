@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Smiles Project</title>
+      
+    <script src="https://unpkg.com/jspsych@7.2.1"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-keyboard-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-keyboard-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-audio-button-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-audio-keyboard-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-survey-likert@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-call-function@1.1.0"></script>
+    <script src="https://unpkg.com/@jspsych/plugin-preload@1.1.0"></script>
+    <link href="https://unpkg.com/jspsych@7.2.1/css/jspsych.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/@jspsych-contrib/plugin-pipe"></script> 
+      
+  </head>
+  <body></body>
+    
+  <script>
+      
+
+ // This is the saving and sart experiment function         
+    var jsPsych = initJsPsych({
+        show_progress_bar:true,
+        on_data_update: function(){
+            var filename = "smile_triplets_" + subject_id; // change to change file name
+            jsPsych.data.addProperties({worker_id: urlvar.workerId});
+            timeline.push(save_data);
+        },
+        on_finish: function(){
+            var filename = "smile_triplets_" + subject_id;
+            jsPsych.data.addProperties({worker_id: urlvar.workerId});
+            timeline.push(save_data);
+        }
+    });
+      
+      const save_data = {
+                type: jsPsychPipe,
+                action: "save",
+                experiment_id: "ZeuVHnMuPvjI",
+                filename: filename,
+                data_string: ()=>jsPsych.data.get().csv()
+              }; 
+
+          /* create timeline */
+    var timeline = [];
+   
+      const subject_id = jsPsych.randomization.randomID(10);
+      var filename = "smile_triplets_" + subject_id; // change to change file name    
+    
+    // pulling info re: mechanical turk hit
+      var urlvar = jsPsych.data.urlVariables();  
+      
+    
+    var preload = {
+        type: jsPsychPreload,
+        auto_preload: true,
+         images: ['resources/image1.jpg',
+                  'resources/image10.jpg',
+                  'resources/image11.jpg',
+                  'resources/image12.jpg',
+                  'resources/image13.jpg',
+                  'resources/image14.jpg',
+                  'resources/image15.jpg',
+                  'resources/image16.jpg',
+                  'resources/image17.jpg',
+                  'resources/image18.jpg',
+                  'resources/image19.jpg',
+                  'resources/image2.jpg',
+                  'resources/image20.jpg',
+                  'resources/image21.jpg',
+                  'resources/image22.jpg',
+                  'resources/image23.jpg',
+                  'resources/image24.jpg',
+                  'resources/image25.jpg',
+                  'resources/image26.jpg',
+                  'resources/image27.jpg',
+                  'resources/image28.jpg',
+                  'resources/image29.jpg',
+                  'resources/image3.jpg',
+                  'resources/image30.jpg',
+                  'resources/image31.jpg',
+                  'resources/image32.jpg',
+                  'resources/image33.jpg',
+                  'resources/image34.jpg',
+                  'resources/image35.jpg',
+                  'resources/image36.jpg',
+                  'resources/image37.jpg',
+                  'resources/image38.jpg',
+                  'resources/image39.jpg',
+                  'resources/image4.jpg',
+                  'resources/image40.jpg',
+                  'resources/image41.jpg',
+                  'resources/image42.jpg',
+                  'resources/image43.jpg',
+                  'resources/image44.jpg',
+                  'resources/image45.jpg',
+                  'resources/image46.jpg',
+                  'resources/image47.jpg',
+                  'resources/image48.jpg',
+                  'resources/image5.jpg',
+                  'resources/image6.jpg',
+                  'resources/image7.jpg',
+                  'resources/image8.jpg',
+                  'resources/image9.jpg'],
+        show_progress_bar: true,
+        message: "Loading experiment files...",
+        error_message: "Oops! There's a problem loading files. Please refresh the page to try again."
+    }  
+    timeline.push(preload);
+    
+      
+    var item = [{item: 'resources/image1.jpg'},
+                {item: 'resources/image10.jpg'},
+                {item: 'resources/image11.jpg'},
+                {item: 'resources/image12.jpg'},
+                {item: 'resources/image13.jpg'},
+                {item: 'resources/image14.jpg'},
+                {item: 'resources/image15.jpg'},
+                {item: 'resources/image16.jpg'},
+                {item: 'resources/image17.jpg'},
+                {item: 'resources/image18.jpg'},
+                {item: 'resources/image19.jpg'},
+                {item: 'resources/image2.jpg'},
+                {item: 'resources/image20.jpg'},
+                {item: 'resources/image21.jpg'},
+                {item: 'resources/image22.jpg'},
+                {item: 'resources/image23.jpg'},
+                {item: 'resources/image24.jpg'},
+                {item: 'resources/image25.jpg'},
+                {item: 'resources/image26.jpg'},
+                {item: 'resources/image27.jpg'},
+                {item: 'resources/image28.jpg'},
+                {item: 'resources/image29.jpg'},
+                {item: 'resources/image3.jpg'},
+                {item: 'resources/image30.jpg'},
+                {item: 'resources/image31.jpg'},
+                {item: 'resources/image32.jpg'},
+                {item: 'resources/image33.jpg'},
+                {item: 'resources/image34.jpg'},
+                {item: 'resources/image35.jpg'},
+                {item: 'resources/image36.jpg'},
+                {item: 'resources/image37.jpg'},
+                {item: 'resources/image38.jpg'},
+                {item: 'resources/image39.jpg'},
+                {item: 'resources/image4.jpg'},
+                {item: 'resources/image40.jpg'},
+                {item: 'resources/image41.jpg'},
+                {item: 'resources/image42.jpg'},
+                {item: 'resources/image43.jpg'},
+                {item: 'resources/image44.jpg'},
+                {item: 'resources/image45.jpg'},
+                {item: 'resources/image46.jpg'},
+                {item: 'resources/image47.jpg'},
+                {item: 'resources/image48.jpg'},
+                {item: 'resources/image5.jpg'},
+                {item: 'resources/image6.jpg'},
+                {item: 'resources/image7.jpg'},
+                {item: 'resources/image8.jpg'},
+                {item: 'resources/image9.jpg'}];
+                 
+      var faces_arr = ['resources/image1.jpg',
+                        'resources/image10.jpg',
+                        'resources/image11.jpg',
+                        'resources/image12.jpg',
+                        'resources/image13.jpg',
+                        'resources/image14.jpg',
+                        'resources/image15.jpg',
+                        'resources/image16.jpg',
+                        'resources/image17.jpg',
+                        'resources/image18.jpg',
+                        'resources/image19.jpg',
+                        'resources/image2.jpg',
+                        'resources/image20.jpg',
+                        'resources/image21.jpg',
+                        'resources/image22.jpg',
+                        'resources/image23.jpg',
+                        'resources/image24.jpg',
+                        'resources/image25.jpg',
+                        'resources/image26.jpg',
+                        'resources/image27.jpg',
+                        'resources/image28.jpg',
+                        'resources/image29.jpg',
+                        'resources/image3.jpg',
+                        'resources/image30.jpg',
+                        'resources/image31.jpg',
+                        'resources/image32.jpg',
+                        'resources/image33.jpg',
+                        'resources/image34.jpg',
+                        'resources/image35.jpg',
+                        'resources/image36.jpg',
+                        'resources/image37.jpg',
+                        'resources/image38.jpg',
+                        'resources/image39.jpg',
+                        'resources/image4.jpg',
+                        'resources/image40.jpg',
+                        'resources/image41.jpg',
+                        'resources/image42.jpg',
+                        'resources/image43.jpg',
+                        'resources/image44.jpg',
+                        'resources/image45.jpg',
+                        'resources/image46.jpg',
+                        'resources/image47.jpg',
+                        'resources/image48.jpg',
+                        'resources/image5.jpg',
+                        'resources/image6.jpg',
+                        'resources/image7.jpg',
+                        'resources/image8.jpg',
+                        'resources/image9.jpg'];
+      
+    
+   //to shuffle the array of button choices at the beginning of the experiment   
+    function shuffle(array) {
+        let currentIndex = array.length,  randomIndex;
+        // While there remain elements to shuffle.
+        while (currentIndex != 0) {
+        // Pick a remaining element.
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+        
+    var test_stimuli = [];
+    
+    // to get a random item from the array
+    function getRandomItems(arr) {
+        var temp_array = jsPsych.randomization.sampleWithoutReplacement(arr, 2);
+          arr = arr.filter(e => e !== temp_array[0]);
+          arr = arr.filter(e => e !== temp_array[1]);
+        return temp_array;
+    }
+      
+      
+    /* define welcome message trial */
+    var welcome = {
+      type: jsPsychHtmlKeyboardResponse,
+      stimulus: "Welcome to the experiment. Press any key to begin."
+    };
+    timeline.push(welcome);
+      
+      
+    timeline.push({
+      type: jsPsychFullscreen,
+      fullscreen_mode: true
+    });    
+         
+    /* define consent trial */
+    var consent = {
+        type: jsPsychImageButtonResponse,
+        stimulus: "kc_lab_consent_SONA.png",
+        choices: ["Consent & Continue"]
+    };
+    timeline.push(consent);
+      
+      
+          
+    /* define testing instructions */
+    var instructions = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: "<p>In each trial of this task, you will see three faces: one target face on top, and two face choices beneath the target face." +
+        "</p><p>For each trial, <strong>please select the facial expression that is most similar to the expression conveyed by the target face.</strong>"+
+        "<p>There will be four rounds of this task with 25 trials per round. You will have the opportunity to take a break after each round.</p>"+
+          "<p>Click 'Continue' to begin the test.</p>",
+        choices: ["Continue"],
+      post_trial_gap: 2000
+    };
+    timeline.push(instructions);  
+      
+      //cross in between trials to break them up
+      var fixation = {
+          type: jsPsychHtmlKeyboardResponse,
+            stimulus: '+',
+            choices: "NO_KEYS",
+            trial_duration: 500
+        };
+      timeline.push(fixation);
+      
+      var arr_pair = [];
+
+      // define the trials!
+      var trial = {
+          type: jsPsychImageButtonResponse,
+            stimulus: jsPsych.timelineVariable('item'),         
+            choices: function(){
+                shuffle(faces_arr);
+                arr_pair = getRandomItems(faces_arr);
+                return arr_pair;
+            },
+            button_html: '<button class="jspsych-btn"><img src= %choice%></button>',
+            on_finish: function(data){
+                shuffle(faces_arr);
+                data.choices = arr_pair;
+            }
+      };
+      
+      
+      // defining the procedure!
+      
+var face_procedure = {
+    timeline: [fixation, trial],
+    timeline_variables: item,
+    randomize_order: true,
+    sample: {
+        type: 'with-replacement',
+        size: 100 //change for final experiment to full number of trials 
+    }
+};
+      
+      
+    var quick_break = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: "Nice job! Feel free to take a quick break, then click 'Continue' when you are ready proceed to the next round." +
+        "<p>Remember, your task is to <strong>select the face that is most similar to the target face on top.</strong>",
+        choices: ["Continue"]
+    };
+      
+      
+      
+      
+timeline.push(face_procedure);
+timeline.push(quick_break);
+timeline.push(face_procedure);
+ 
+      
+    
+      
+var demographic_instructions = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: "<p>Awesome!<p>For this last part of the experiment, please provide us with information about yourself.</p> ",
+      choices: ["Continue"],
+      post_trial_gap: 1000
+    };
+timeline.push(demographic_instructions);
+      
+      
+var demographics = {
+    type: jsPsychSurveyMultiSelect,
+    questions: [
+      {prompt: "Which categories describe you? Select all that apply to you:", 
+        options: ["American Indian or Alaska Naive - For example, Navajo Nation, Mayan", 
+                  "Asian - For example, Chinese, Asian Indian",
+                  "Black or African American - For example, Jamaican, Ethiopian",
+                  "Hispanic or Latino - For example, Mexican or Mexican American, Puerto Rican, Salvadoran",
+                 "Middle Eastern or North African - For example, Lebanese, Iranian, Moroccan",
+                 "Native Hawaiian or Other Pacific Islander - For example, Somoan, Fijian",
+                 "White - For example, German, Irish",
+                 "Some other race, ethnicity, or origin",
+                 "I prefer not to answer"], 
+        horizontal: false,
+        required: true,
+        name: 'race_eth'}
+    ]};
+    timeline.push(demographics);  
+
+    
+      
+    var id_age = {
+      type: jsPsychSurveyText,
+      questions: [{prompt: "Please enter your age (in years):", rows: 1, columns: 6, name: "age", required: true}, 
+                  {prompt: "How do you currently describe your gender identity? Please specify.", rows: 1, columns: 60, name: "gender"},
+                  {prompt: "What is your ZIP code?", rows : 1, columns: 6, name: "zip"}
+                 ]
+    };
+    timeline.push(id_age);
+      
+      
+      
+   var goodbye = {
+      type: jsPsychHtmlButtonResponse,
+      stimulus: function(){
+        output = "Woohoo! You have finished the experiment. <br>";
+         // if(urlvar.workerId.length > 7){
+        //      output = output + "<strong> Here is your secret code: " + secret_code + "</strong><br>";
+  //        }
+        output = output + "You may now close this screen. Goodbye!<br><br>";
+      return output;
+      },
+      choices: ["Complete Experiment"]    
+   };
+    timeline.push(goodbye);
+
+
+      
+      
+  // this is a template  
+    function saveData(name, data){
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'data_write.php'); // 'write_data.php' is the path to the php file described above.
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.send(JSON.stringify({filename: name, filedata: data}));
+    }
+       
+      
+    jsPsych.run(timeline);
+
+
+
+  </script>
+  </html>
+
+<!--
+
+-->

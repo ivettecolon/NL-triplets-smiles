@@ -25,7 +25,6 @@
 
  // This is the saving and sart experiment function         
     var jsPsych = initJsPsych({
-        show_progress_bar:true,
         on_data_update: function(){
             var filename = "smile_triplets_" + subject_id; // change to change file name
             jsPsych.data.addProperties({worker_id: urlvar.workerId});
@@ -111,7 +110,6 @@
         message: "Loading experiment files...",
         error_message: "Oops! There's a problem loading files. Please refresh the page to try again."
     }  
-    timeline.push(preload);
     
       
     var item = [{item: 'resources/image1.jpg'},
@@ -245,6 +243,9 @@
       stimulus: "Welcome to the experiment. Press any key to begin."
     };
     timeline.push(welcome);
+    
+    timeline.push(preload); // waiting to push until after some other user gesture...
+
       
       
     timeline.push({

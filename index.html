@@ -28,12 +28,6 @@
         on_data_update: function(){
             var filename = "smile_triplets_" + subject_id; // change to change file name
             jsPsych.data.addProperties({worker_id: urlvar.workerId});
-            timeline.push(save_data);
-        },
-        on_finish: function(){
-            var filename = "smile_triplets_" + subject_id;
-            jsPsych.data.addProperties({worker_id: urlvar.workerId});
-            timeline.push(save_data);
         }
     });
       
@@ -373,6 +367,8 @@ var demographics = {
                  ]
     };
     timeline.push(id_age);
+
+    timeline.push(save_data);
       
       
       

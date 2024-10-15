@@ -26,24 +26,24 @@
  // This is the saving and sart experiment function         
     var jsPsych = initJsPsych({
         on_data_update: function(){
-            var filename = "smile_triplets_" + subject_id; // change to change file name
             jsPsych.data.addProperties({worker_id: urlvar.workerId});
         }
     });
       
-      const save_data = {
-                type: jsPsychPipe,
-                action: "save",
-                experiment_id: "ZeuVHnMuPvjI",
-                filename: filename,
-                data_string: ()=>jsPsych.data.get().csv()
-              }; 
+
+    const save_data = {
+      type: jsPsychPipe,
+      action: "save",
+      experiment_id: "tIqSWITxvcMU",
+      filename: filename,
+      data_string: ()=>jsPsych.data.get().csv()
+    };
 
           /* create timeline */
     var timeline = [];
    
       const subject_id = jsPsych.randomization.randomID(10);
-      var filename = "smile_triplets_" + subject_id; // change to change file name    
+      var filename = "hg_cfd_triplets_" + subject_id + ".csv; // change to change file name    
     
     // pulling info re: mechanical turk hit
       var urlvar = jsPsych.data.urlVariables();  

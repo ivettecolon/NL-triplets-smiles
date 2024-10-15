@@ -9,7 +9,7 @@
     <script src="https://unpkg.com/@jspsych/plugin-image-button-response@1.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-fullscreen@1.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-multi-select@1.1.0"></script>
-    <script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.0"></script>
+<script src="https://unpkg.com/@jspsych/plugin-survey-text@1.1.3"></script>
     <script src="https://unpkg.com/@jspsych/plugin-html-button-response@1.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-survey-likert@1.1.0"></script>
     <script src="https://unpkg.com/@jspsych/plugin-call-function@1.1.0"></script>
@@ -32,8 +32,15 @@
             jsPsych.data.addProperties({worker_id: urlvar.workerId});
         }
     });
-      
 
+          /* create timeline */
+    var timeline = [];
+   
+
+    const subject_id = jsPsych.randomization.randomID(10);
+    const filename = `hg_smiles_${subject_id}_.csv`;
+
+    
     const save_data = {
       type: jsPsychPipe,
       action: "save",
@@ -41,12 +48,7 @@
       filename: filename,
       data_string: ()=>jsPsych.data.get().csv()
     };
-
-          /* create timeline */
-    var timeline = [];
-   
-      const subject_id = jsPsych.randomization.randomID(10);
-      var filename = "hg_cfd_triplets_" + subject_id + ".csv"; // change to change file name    
+            
     
     // pulling info re: mechanical turk hit
       var urlvar = jsPsych.data.urlVariables();  
@@ -310,7 +312,7 @@ var face_procedure = {
     randomize_order: true,
     sample: {
         type: 'with-replacement',
-        size: 100 //change for final experiment to full number of trials 
+        size: 100 //change for final experiment to full number of trials (100)
     }
 };
       
